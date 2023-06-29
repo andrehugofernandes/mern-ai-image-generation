@@ -28,7 +28,8 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch('https://dall-e2-4ax7.onrender.com/api/v1/dalle', {
+        //const response = await fetch('https://dall-e2-4ax7.onrender.com/api/v1/dalle', {
+        const response = await fetch('http://localhost:8080/api/v1/dalle', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -46,7 +47,7 @@ const CreatePost = () => {
         setGeneratingImg(false);
       }
     } else {
-      alert('Please provide proper prompt');
+      alert('Por favor, forneça o prompt adequado.');
     }
   };
 
@@ -56,7 +57,8 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch('https://dall-e2-4ax7.onrender.com/api/v1/post', {
+        //const response = await fetch('https://dall-e2-4ax7.onrender.com/api/v1/dalle', {
+        const response = await fetch('http://localhost:8080/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -73,7 +75,7 @@ const CreatePost = () => {
         setLoading(false);
       }
     } else {
-      alert('Please generate an image with proper details');
+      alert('Por favor, gere uma imagem com os detalhes apropriados');
     }
   };
 
@@ -89,16 +91,16 @@ const CreatePost = () => {
       <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField
-            labelName="Your Name"
+            labelName="Seu Nome"
             type="text"
             name="name"
-            placeholder="Ex., john doe"
+            placeholder="Ex.: André Hugo"
             value={form.name}
             handleChange={handleChange}
           />
 
           <FormField
-            labelName="Prompt"
+            labelName="Seu Prompt"
             type="text"
             name="prompt"
             placeholder="Uma pintura a óleo impressionista de girassóis em um vaso roxo..."
@@ -108,8 +110,10 @@ const CreatePost = () => {
             handleSurpriseMe={handleSurpriseMe}
           />
 
-          <div className="relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-           focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
+          <div className="relative bg-gray-50 border border-gray-300
+           text-gray-900 text-sm rounded-lg
+           focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex 
+           justify-center items-center">
             { form.photo ? (
               <img
                 src={form.photo}
@@ -136,9 +140,9 @@ const CreatePost = () => {
           <button
             type="button"
             onClick={generateImage}
-            className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            className=" text-white bg-blue-600 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
-            {generatingImg ? 'Generating...' : 'Generate'}
+            {generatingImg ? 'Criando uma Imagem...' : 'Criar Imagem'}
           </button>
         </div>
 
@@ -147,9 +151,9 @@ const CreatePost = () => {
             compartilhá-la com outras pessoas **</p>
           <button
             type="submit"
-            className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            className="mt-3 text-white bg-[#003476] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           >
-            {loading ? 'Sharing...' : 'Share with the Community'}
+            {loading ? 'Compartihando...' : 'Compartilhe Sua Imagem'}
           </button>
         </div>
       </form>
