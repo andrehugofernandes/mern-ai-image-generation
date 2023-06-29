@@ -28,8 +28,8 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        //const response = await fetch('https://dall-e2-4ax7.onrender.com/api/v1/dalle', {
-        const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        const response = await fetch('https://mern-ai-image.onrender.com/api/v1/dalle', {
+        //const response = await fetch('http://localhost:8080/api/v1/dalle', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -57,8 +57,8 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        //const response = await fetch('https://dall-e2-4ax7.onrender.com/api/v1/dalle', {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
+        const response = await fetch('https://mern-ai-image.onrender.com/api/v1/dalle', {
+        //const response = await fetch('http://localhost:8080/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
