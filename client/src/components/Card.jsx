@@ -91,7 +91,7 @@ const Card = ({ _id, name, prompt, photo }) => {
               X
             </button>
             <img
-              className="w-full h-[85vh] object-cover rounded-lg"
+              className="w-full h-[80vh] object-cover rounded-lg"
               src={photo}
               alt={prompt}
             />
